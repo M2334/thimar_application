@@ -35,10 +35,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       builder: (context, child) {return Directionality(textDirection: TextDirection.rtl,
          child: child!,);},
-      // home: const RegisterScreen(),
-      // home: const MyOrderScreen(),
-      // home: const NotificationsScreen(),
-      // home: const VerfiycodeScreen(),
+
       home: const SplashScreen(),
     );
   }
