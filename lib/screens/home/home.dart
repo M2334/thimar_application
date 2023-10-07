@@ -3,17 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thimarr/core/design/custom_text_field.dart';
 import 'package:thimarr/screens/home/home_cubit.dart';
+import 'package:thimarr/screens/home/pages/favourites/view.dart';
+import 'package:thimarr/screens/home/pages/main/view.dart';
+import 'package:thimarr/screens/home/pages/my_account/view.dart';
+import 'package:thimarr/screens/home/pages/my_orders/view.dart';
+import 'package:thimarr/screens/home/pages/notifications/view.dart';
 
 import 'home_states.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int curentIndex = 0;
+  List<Widget> pages = [
+    MainPage(),
+    NotificationsPage(),
+    MyAccountPage(),
+    MyOrderPage(),
+    FavouritesPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -93,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   pauseAutoPlayOnManualNavigate: true,
                                   aspectRatio: 16 / 9,
                                   animateToClosest: true,
-                                ))
+                                ),)
                             : Container();
                   }),
                   const SizedBox(
@@ -138,6 +150,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: curentIndex,
+          onTap: (value){
+            curentIndex = value;
+            setState(() {
+            });
+          },
           // fixedColor:Colors.green ,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(

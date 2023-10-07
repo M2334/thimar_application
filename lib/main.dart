@@ -6,8 +6,7 @@ import 'package:thimarr/screens/auth/create.dart';
 import 'package:thimarr/screens/auth/register/register.dart';
 import 'package:thimarr/screens/auth/splash.dart';
 import 'package:thimarr/screens/auth/verfiycode/verfiycode.dart';
-import 'package:thimarr/screens/my_orders/view.dart';
-import 'package:thimarr/screens/notifications/view.dart';
+
 
 import 'controller/login_controller.dart';
 import 'core/logic/helper_navgat.dart';
