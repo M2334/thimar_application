@@ -54,72 +54,13 @@ class _ValaditionScreenState extends State<ValaditionScreen> {
                 const SizedBox(
                   height: 6,
                 ),
-
-                CustomRichText(text1: 'أدخل الكودالمكون من 4 أرقام المرسل على رقم الجوال+9660548745',
-                    color: Colors.grey,
-                    text2: 'تغير رقم الجوال',
-                    onTap: () {
-
-                }
-
-
-                ,),
-                // RichText(
-                //   text: TextSpan(
-                //     text: 'أدخل الكودالمكون من 4 أرقام المرسل على رقم الجوال+9660548745 ',
-                //     style: const TextStyle(
-                //       fontSize: 16,
-                //       color: Colors.grey
-                //         ),
-                //     children: <TextSpan>[
-                //       TextSpan(
-                //           recognizer: TapGestureRecognizer()
-                //             ..onTap = () {
-                //               Navigator.push(context,
-                //                   MaterialPageRoute(builder: (c) {
-                //                     return const ChangePhoneScreen();
-                //                   }));
-                //             },
-                //           text: 'تغير رقم الجوال',
-                //           style: const TextStyle(
-                //               fontWeight: FontWeight.bold, color: Colors.green)),
-                //     ],
-                //   ),
-                // ),
-
-
-                // const Align(
-                //   alignment: Alignment.bottomRight,
-                //   child: Text(
-                //     'أدخل الكودالمكون من 4 أرقام المرسل على رقم الجوال+9660548745',
-                //     style: TextStyle(fontSize: 16, fontFamily: 'Tajawal'),
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 10,
-                // ),
-                // CustomTextButton(
-                //   text: 'تغير رقم الجوال',
-                //   onPress: () {
-                //     Navigator.push(context, MaterialPageRoute(builder: (c) {
-                //       return const ChangePhoneScreen();
-                //     }));
-                //   },
-                // ),
-
-
-
-
-                // TextButton(
-                //     onPressed: () {
-                //       Navigator.push(context, MaterialPageRoute(builder: (c) {
-                //         return const ChangePhoneScreen();
-                //       }));
-                //     },
-                //     child: const Text(
-                //       'تغير رقم الجوال',
-                //       style: TextStyle(fontSize: 16, color: Color(0xFF558B2F)),
-                //     )),
+                CustomRichText(
+                  text1:
+                      'أدخل الكودالمكون من 4 أرقام المرسل على رقم الجوال+9660548745',
+                  color: Colors.grey,
+                  text2: 'تغير رقم الجوال',
+                  onTap: () {},
+                ),
                 const SizedBox(
                   height: 40,
                 ),
@@ -153,23 +94,10 @@ class _ValaditionScreenState extends State<ValaditionScreen> {
                   text: 'تأكيد الكود',
                   onPress: () {},
                   style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Color(0xFF558B2F)),
+                    backgroundColor:
+                        MaterialStatePropertyAll(Color(0xFF558B2F)),
                   ),
                 ),
-                // Container(
-                //   width: double.infinity,
-                //   padding: const EdgeInsetsDirectional.all(25),
-                //   child: ElevatedButton(
-                //       style: const ButtonStyle(
-                //         backgroundColor:
-                //             MaterialStatePropertyAll(Color(0xFF558B2F)),
-                //       ),
-                //       onPressed: () {},
-                //       child: const Text(
-                //         'تأكيد الكود ',
-                //         style: TextStyle(fontSize: 16, fontFamily: 'Tajawal'),
-                //       )),
-                // ),
                 const Text(
                   'لم تستلم الكود؟ ',
                   style: TextStyle(fontFamily: 'Tajawal', fontSize: 16),
@@ -189,12 +117,6 @@ class _ValaditionScreenState extends State<ValaditionScreen> {
                   controller: _controller,
                   isTimerTextShown: true,
                   textStyle: const TextStyle(fontSize: 20, color: Colors.green),
-                  // onComplete: (){
-                  //    Alert(
-                  //      context:context,
-                  //      title:'done',
-                  //    ).show();
-                  // },
                 ),
                 Container(
                   padding: const EdgeInsetsDirectional.only(bottom: 10),
@@ -206,70 +128,22 @@ class _ValaditionScreenState extends State<ValaditionScreen> {
                       child: const Text(
                         'إعادة الإرسال',
                         style: TextStyle(
-                            fontSize: 16, color: Colors.green, fontFamily: 'Tajawal'),
+                            fontSize: 16,
+                            color: Colors.green,
+                            fontFamily: 'Tajawal'),
                       )),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
-                // const Text(
-                //   'لديك حساب بالفعل ؟',
-                //   style: TextStyle(
-                //       fontWeight: FontWeight.bold,
-                //       fontFamily: 'Tajawal',
-                //       fontSize: 16,
-                //       color: Colors.green),
-                // ),
-
-                CustomRichText(text1: 'لديك حساب بالفعل ؟',
-                    color: Colors.green,
-                    text2: 'تسجيل الدخول ',
-                    onTap: () {
-                  navigatorTo(LoginScreen());
-                },),
-                // RichText(
-                //   text: TextSpan(
-                //     text: 'لديك حساب بالفعل ؟ ',
-                //     style: const TextStyle(
-                //         fontWeight: FontWeight.bold, color: Colors.green),
-                //     children: <TextSpan>[
-                //       TextSpan(
-                //           recognizer: TapGestureRecognizer()
-                //             ..onTap = () {
-                //               Navigator.push(context,
-                //                   MaterialPageRoute(builder: (c) {
-                //                     return const LoginScreen();
-                //                   }));
-                //             },
-                //           text: 'تسجيل الدخول',
-                //           style: const TextStyle(
-                //               fontWeight: FontWeight.bold, color: Colors.green)),
-                //     ],
-                //   ),
-                // ),
-
-
-                // CustomTextButton(
-                //   text: ' تسجيل الدخول',
-                //   onPress: () {
-                //     Navigator.push(context, MaterialPageRoute(builder: (c) {
-                //       return const LoginScreen();
-                //     }));
-                //   },
-                // ),
-                // TextButton(
-                //   onPressed: () {
-                //     Navigator.push(context, MaterialPageRoute(builder: (c) {
-                //       return const LoginScreen();
-                //     }));
-                //   },
-                //   child: const Text('لديك حساب بالفعل ؟ تسجيل الدخول',
-                //       style: TextStyle(
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 16,
-                //           color: Colors.green,
-                //           fontFamily: 'Tajawal')),
-                // ),
+                CustomRichText(
+                  text1: 'لديك حساب بالفعل ؟',
+                  color: Colors.green,
+                  text2: 'تسجيل الدخول ',
+                  onTap: () {
+                    navigatorTo(LoginScreen());
+                  },
+                ),
               ],
             ),
           ),

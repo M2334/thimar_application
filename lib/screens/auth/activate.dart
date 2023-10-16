@@ -53,49 +53,13 @@ class _ActiveAcountScreenState extends State<ActiveAcountScreen> {
               const SizedBox(
                 height: 6,
               ),
-
               CustomRichText(
                 text1:
                     'أدخل الكود المكون من 4 أرقام المرسل اليك على رقم الجوال+9660548745 ',
                 text2: 'تغير رقم الجوال',
                 color: Colors.grey,
-                onTap: () {
-                },
+                onTap: () {},
               ),
-
-              // RichText(
-              //   text: TextSpan(
-              //     text: 'أدخل الكودالمكون من 4 أرقام المرسل على رقم الجوال+9660548745 ',
-              //     style: const TextStyle(
-              //         fontSize: 16,
-              //         color: Colors.grey
-              //     ),
-              //     children: <TextSpan>[
-              //       TextSpan(
-              //           recognizer: TapGestureRecognizer()
-              //             ..onTap = () {
-              //               Navigator.push(context,
-              //                   MaterialPageRoute(builder: (c) {
-              //                     return const ChangePhoneScreen();
-              //                   }));
-              //             },
-              //           text: 'تغير رقم الجوال',
-              //           style: const TextStyle(
-              //               fontWeight: FontWeight.bold, color: Colors.green)),
-              //     ],
-              //   ),
-              // ),
-
-              // TextButton(
-              //     onPressed: () {
-              //       Navigator.push(context, MaterialPageRoute(builder: (c) {
-              //         return const ChangePhoneScreen();
-              //       }));
-              //     },
-              //     child: const Text(
-              //       'تغير رقم الجوال',
-              //       style: TextStyle(fontSize: 16, color: Color(0xFF558B2F)),
-              //     )),
               const SizedBox(
                 height: 40,
               ),
@@ -180,65 +144,14 @@ class _ActiveAcountScreenState extends State<ActiveAcountScreen> {
               const SizedBox(
                 height: 8,
               ),
-
-              CustomRichText(text1: 'لديك حساب بالفعل ؟',
-                  color: Colors.grey,
-                  text2: 'تسجيل الدخول',
-                  onTap: () {
+              CustomRichText(
+                text1: 'لديك حساب بالفعل ؟',
+                color: Colors.grey,
+                text2: 'تسجيل الدخول',
+                onTap: () {
                   navigatorTo(LoginScreen());
-                },),
-
-              // RichText(
-              //   text: TextSpan(
-              //     text: 'لديك حساب بالفعل ؟ ',
-              //     style: const TextStyle(
-              //         fontWeight: FontWeight.bold, color: Colors.green),
-              //     children: <TextSpan>[
-              //       TextSpan(
-              //           recognizer: TapGestureRecognizer()
-              //             ..onTap = () {
-              //               Navigator.push(context,
-              //                   MaterialPageRoute(builder: (c) {
-              //                 return const LoginScreen();
-              //               }));
-              //             },
-              //           text: 'تسجيل الدخول',
-              //           style: const TextStyle(
-              //               fontWeight: FontWeight.bold, color: Colors.green)),
-              //     ],
-              //   ),
-              // ),
-
-              // const Text(
-              //   'لديك حساب بالفعل ؟',
-              //   style: TextStyle(
-              //       fontWeight: FontWeight.bold,
-              //       fontFamily: 'Tajawal',
-              //       fontSize: 16,
-              //       color: Colors.green),
-              // ),
-
-              // CustomTextButton(
-              //   text: 'تسجيل الدخول',
-              //   onPress: () {
-              //     Navigator.push(context, MaterialPageRoute(builder: (c) {
-              //       return const LoginScreen();
-              //     }));
-              //   },
-              // ),
-              // TextButton(
-              //   onPressed: () {
-              //     Navigator.push(context, MaterialPageRoute(builder: (c) {
-              //       return const LoginScreen();
-              //     }));
-              //   },
-              //   child: const Text('تسجيل الدخول',
-              //       style: TextStyle(
-              //           fontWeight: FontWeight.bold,
-              //           fontSize: 16,
-              //           color: Colors.green,
-              //           fontFamily: 'Tajawal')),
-              // ),
+                },
+              ),
             ],
           ),
         ),

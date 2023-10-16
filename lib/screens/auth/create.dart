@@ -54,45 +54,32 @@ class _CreateNewPasswardState extends State<CreateNewPassward> {
                 const SizedBox(
                   height: 10,
                 ),
-                 CustomTextField(
-                   controller: TextEditingController(),
+                CustomTextField(
+                  controller: TextEditingController(),
                   labelText: 'كلمة المرور ',
                   prefixIcon: const Icon(Icons.lock_open_rounded),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                // Container(
-                //   width: double.infinity,
-                //   padding: const EdgeInsetsDirectional.all(10.0),
-                //   child: const TextField(
-                //     decoration: InputDecoration(
-                //       prefixIcon: Icon(Icons.lock_open_rounded),
-                //       labelText: 'كلمة المرور',
-                //     ),
-                //   ),
-                // ),
-                 CustomTextField(
+                CustomTextField(
                   controller: TextEditingController(),
                   labelText: 'كلمة المرور ',
                   prefixIcon: const Icon(Icons.lock_open_rounded),
                 ),
-                // Container(
-                //   width: double.infinity,
-                //   padding: const EdgeInsetsDirectional.all(10.0),
-                //   child: const TextField(
-                //     decoration: InputDecoration(
-                //       prefixIcon: Icon(Icons.lock_open_rounded),
-                //       labelText: 'كلمة المرور',
-                //     ),
-                //   ),
-                // ),
-                CustomButton(text: 'تغير كلمة المرور', onPress: (){
-                  navigatorTo(const ValaditionScreen());
-                }, style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Color(0xFF558B2F)),
-                ),),
-                const SizedBox(height: 10,),
+                CustomButton(
+                  text: 'تغير كلمة المرور',
+                  onPress: () {
+                    navigatorTo(const ValaditionScreen());
+                  },
+                  style: const ButtonStyle(
+                    backgroundColor:
+                        MaterialStatePropertyAll(Color(0xFF558B2F)),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 RichText(
                   text: TextSpan(
                     text: 'لديك حساب بالفعل ؟ ',
@@ -109,17 +96,11 @@ class _CreateNewPasswardState extends State<CreateNewPassward> {
                             },
                           text: 'تسجيل الدخول',
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.green)),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green)),
                     ],
                   ),
                 ),
-                // Row(
-                //   children: const [
-                //     Text('لديك حساب بالفعل ؟',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),),
-                //     Text('تسجيل الدخول',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.green),),
-                //
-                //   ],
-                // ),
               ],
             ),
           ),

@@ -83,21 +83,7 @@ class LoginScreen extends StatelessWidget {
                         controller: cubit.phoneController,
                         labelText: 'رقم الجوال',
                         prefixIcon: const Icon(Icons.phone_enabled),
-                      ))
-                      // Expanded(
-                      //   flex: 8,
-                      //   child: Container(
-                      //     child: const TextField(
-                      //       decoration: InputDecoration(
-                      //         border: OutlineInputBorder(
-                      //           borderRadius: BorderRadius.all(Radius.circular(10)),
-                      //         ),
-                      //         prefixIcon: Icon(Icons.phone_enabled),
-                      //         labelText: 'رقم الجوال',
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
+                      )),
                     ],
                   ),
                   const SizedBox(
@@ -108,13 +94,6 @@ class LoginScreen extends StatelessWidget {
                     labelText: 'كلمة المرور',
                     prefixIcon: const Icon(Icons.lock_open_sharp),
                   ),
-                  // const TextField(
-                  //   decoration: InputDecoration(
-                  //       border: OutlineInputBorder(
-                  //           borderRadius: BorderRadius.all(Radius.circular(10))),
-                  //       prefixIcon: Icon(Icons.lock_open_sharp),
-                  //       labelText: 'كلمة المرور'),
-                  // ),
                   const SizedBox(
                     height: 25,
                   ),
@@ -142,38 +121,12 @@ class LoginScreen extends StatelessWidget {
                                   text: 'تسجيل الدخول',
                                   onPress: () async {
                                     cubit.login();
-                                    // LoginController controller = LoginController();
-                                    //  controller.sendData(phoneController.text, passwordController.text);
-                                    // Navigator.push(context, MaterialPageRoute(builder: (c) {
-                                    //   return  const HomeScreen();
-                                    // }));
                                   },
                                   style: const ButtonStyle(
                                     backgroundColor: MaterialStatePropertyAll(
                                         Color(0xFF558B2F)),
                                   ),
                                 );
-
-                      //  if (state is LoginLoadingState){
-                      //    return   CircularProgressIndicator();
-                      //  }
-                      //  else {
-                      // return   CustomButton(
-                      //      text: 'تسجيل الدخول',
-                      //      onPress: () async {
-                      //        cubit.login();
-                      //        // LoginController controller = LoginController();
-                      //        //  controller.sendData(phoneController.text, passwordController.text);
-                      //        // Navigator.push(context, MaterialPageRoute(builder: (c) {
-                      //        //   return  const HomeScreen();
-                      //        // }));
-                      //      },
-                      //      style: const ButtonStyle(
-                      //        backgroundColor: MaterialStatePropertyAll(Color(0xFF558B2F)),
-                      //      ),
-                      //    );
-                      //  }
-                      return FlutterLogo();
                     },
                     listener: (BuildContext context, Object? state) {
                       if (state is LoginSuccessState) {
@@ -181,18 +134,6 @@ class LoginScreen extends StatelessWidget {
                       }
                     },
                   ),
-                  // custom button widget shared on screen basic code complex
-                  // Container(
-                  //   width:double.infinity,
-                  //   padding: const EdgeInsetsDirectional.all(25),
-                  //   child: ElevatedButton(
-                  //     onPressed: () {},
-                  //     style: const ButtonStyle(
-                  //       backgroundColor: MaterialStatePropertyAll(Color(0xFF558B2F)),
-                  //     ),
-                  //     child: const Text('تسجيل الدخول'),
-                  //   ),
-                  // ),
                   const SizedBox(
                     height: 10,
                   ),

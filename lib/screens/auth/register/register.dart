@@ -83,15 +83,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(
                       height: 10,
                     ),
-                    // const TextField(
-                    //   decoration: InputDecoration(
-                    //     border: OutlineInputBorder(
-                    //       borderRadius: BorderRadius.all(Radius.circular(10)),
-                    //     ),
-                    //     labelText: 'اسم المستخدم',
-                    //     prefixIcon: Icon(Icons.person),
-                    //   ),
-                    // ),
                     Row(
                       children: [
                         const Image(image: AssetImage('assets/images/3.png')),
@@ -103,30 +94,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: cubit.phone,
                           labelText: 'رقم الجوال',
                           prefixIcon: const Icon(Icons.phone_enabled),
-                        ))
-                        // Container(
-                        //    child: const TextField(
-                        //      decoration: InputDecoration(
-                        //        border: OutlineInputBorder(
-                        //          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        //        ),
-                        //        prefixIcon: Icon(Icons.phone_enabled),
-                        //        labelText: 'رقم الجوال',
-                        //      ),
-                        //    ),
-                        //  ),
+                        )),
                       ],
                     ),
                     const SizedBox(
                       height: 6,
                     ),
                     GestureDetector(
-                      onTap: ()async{
-                        var result = await showModalBottomSheet(context: context, builder: (context) =>const CitiesSheets(),);
-                        if(result!=null){
+                      onTap: () async {
+                        var result = await showModalBottomSheet(
+                          context: context,
+                          builder: (context) => const CitiesSheets(),
+                        );
+                        if (result != null) {
                           selectedCityText = result;
-                          setState(() {
-                          });
+                          setState(() {});
                           print("The Result is $selectedCityText");
                         }
                       },
@@ -135,28 +117,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Expanded(
                             child: CustomTextField(
                               controller: countryIdController,
-                              labelText: selectedCityText??' المدينة الحالية',
+                              labelText: selectedCityText ?? ' المدينة الحالية',
                               isEnabled: false,
                               prefixIcon: const Icon(Icons.location_city),
                             ),
                           ),
-                           if(selectedCityText!=null)
-                           Center(child: IconButton(onPressed: (){
-                             selectedCityText = null;
-                             setState(() {
-                             });
-                           }, icon: const Icon(Icons.clear,color: Colors.red,))),
+                          if (selectedCityText != null)
+                            Center(
+                                child: IconButton(
+                                    onPressed: () {
+                                      selectedCityText = null;
+                                      setState(() {});
+                                    },
+                                    icon: const Icon(
+                                      Icons.clear,
+                                      color: Colors.red,
+                                    ))),
                         ],
                       ),
                     ),
-                    // const TextField(
-                    //   decoration: InputDecoration(
-                    //     border: OutlineInputBorder(
-                    //         borderRadius: BorderRadius.all(Radius.circular(10))),
-                    //     labelText: 'المدينة',
-                    //     prefixIcon: Icon(Icons.location_city),
-                    //   ),
-                    // ),
                     const SizedBox(
                       height: 6,
                     ),
@@ -165,14 +144,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       labelText: 'كلمة المرور',
                       prefixIcon: const Icon(Icons.lock_open_rounded),
                     ),
-                    // const TextField(
-                    //   decoration: InputDecoration(
-                    //     border: OutlineInputBorder(
-                    //         borderRadius: BorderRadius.all(Radius.circular(10))),
-                    //     labelText: 'كلمة المرور',
-                    //     prefixIcon: Icon(Icons.lock_open_rounded),
-                    //   ),
-                    // ),
                     const SizedBox(
                       height: 6,
                     ),
@@ -181,18 +152,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       labelText: 'كلمة المرور',
                       prefixIcon: const Icon(Icons.lock_open_rounded),
                     ),
-                    // const TextField(
-                    //   decoration: InputDecoration(
-                    //     border: OutlineInputBorder(
-                    //         borderRadius: BorderRadius.all(Radius.circular(10))),
-                    //     labelText: 'كلمة المرور',
-                    //     prefixIcon: Icon(Icons.lock_open_rounded),
-                    //   ),
-                    // ),
                     const SizedBox(
                       height: 2,
                     ),
-                    BlocConsumer<RegisterCubit,RegisterStates>(
+                    BlocConsumer<RegisterCubit, RegisterStates>(
                       listener: (context, state) {
                         if (state is RegisterSuccessState) {
                           navigatorTo(const HomeScreen());
@@ -231,53 +194,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(
                       height: 1,
                     ),
-                    // Container(
-                    //   width: double.infinity,
-                    //   padding: const EdgeInsetsDirectional.only(start: 25,end: 25),
-                    //   child: ElevatedButton(
-                    //
-                    //       style: const ButtonStyle(
-                    //         backgroundColor: MaterialStatePropertyAll(Color(0xFF558B2F)),
-                    //       ),
-                    //       onPressed: () {
-                    //         Navigator.push(context, MaterialPageRoute(builder: (c) {
-                    //           return const ActiveAcountScreen();
-                    //         }));
-                    //       },
-                    //       child: const Text(
-                    //         'تسجيل ',
-                    //         style: TextStyle(fontSize: 16, fontFamily: 'Tajawal'),
-                    //       )),
-                    // ),
-
                     CustomRichText(
                       text1: 'لديك حساب بالفعل؟',
                       text2: 'تسجيل الدخول',
                       onTap: () {
-
                         navigatorTo(const VerfiycodeScreen());
                       },
                       color: Colors.green,
                     ),
-                    // CustomTextButton(
-                    //     text: 'لديك حساب بالفعل؟ تسجيل الدخول',
-                    //     onPress: () {
-                    //       Navigator.push(context, MaterialPageRoute(builder: (c) {
-                    //         return const VerfiycodeScreen();
-                    //       }));
-                    //     }
-                    //     ),
-
-                    // TextButton(
-                    //     onPressed: () {
-                    //       Navigator.push(context, MaterialPageRoute(builder: (c) {
-                    //         return const VerfiycodeScreen();
-                    //       }));
-                    //     },
-                    //     child: const Text(
-                    //       'لديك حساب بالفعل؟ تسجيل الدخول',
-                    //       style: TextStyle(fontSize: 16, color: Color(0xFF558B2F)),
-                    //     )),
                   ],
                 ),
               ),
@@ -288,6 +212,3 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
-
-
-
