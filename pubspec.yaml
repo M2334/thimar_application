@@ -35,6 +35,10 @@ dependencies:
   dio:
   circular_countdown_timer:
   carousel_slider:
+  shared_preferences:
+  google_maps_flutter:
+  geolocator:
+  geocoding:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

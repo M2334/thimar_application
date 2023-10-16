@@ -21,134 +21,18 @@ class _HomeScreenState extends State<HomeScreen> {
   int curentIndex = 0;
   List<Widget> pages = [
     MainPage(),
-    NotificationsPage(),
-    MyAccountPage(),
     MyOrderPage(),
+    NotificationsPage(),
     FavouritesPage(),
+    MyAccountPage(),
   ];
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..homeGetData()..categoireGetData(),
+      create: (context) => HomeCubit()..homeGetData(),
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: SafeArea(
-            child: Container(
-              padding: EdgeInsetsDirectional.all(10),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Image(
-                        image: AssetImage('assets/images/logo.png'),
-                      ),
-                      const Text(
-                        'سلة ثمار',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'Tajawal',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green),
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            TextButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'التوصيل إلى',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Tajawal'),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            const Text(
-                              'شارع الملك فهد - جدة',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'Tajawal',
-                                  color: Colors.green),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Icon(Icons.lock_open),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextField(
-                      controller: TextEditingController(),
-                      labelText: 'إبحث عن ما تريد ',
-                      prefixIcon: const Icon(Icons.search)),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  BlocBuilder<HomeCubit, HomeStates>(builder: (context, state) {
-                    return state is HomeLoadingState
-                        ? const CircularProgressIndicator()
-                        : HomeCubit.sliderData!.isNotEmpty
-                            ? CarouselSlider.builder(
-                                itemCount:HomeCubit.sliderData!.length,
-                                itemBuilder: (c, i, x) {
-                                  return Image.network(HomeCubit.sliderData![i].media);
-                                },
-                                options: CarouselOptions(
-                                  height: 150,
-                                  autoPlay: true,
-                                  pauseAutoPlayOnManualNavigate: true,
-                                  aspectRatio: 16 / 9,
-                                  animateToClosest: true,
-                                ),)
-                            : Container();
-                  }),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
-                    child: Row(
-                      children:  const [
-                        Expanded(
-                            child: Text(
-                          "الأقسام ",
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                        )),
-                        Text(
-                          "عرض الكل",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.green,
-                            fontFamily: 'Tajawal',
-                          ),
-                        ),
-                     ],
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  BlocBuilder<HomeCubit, HomeStates>(
-                    builder: (context, state) {
-                      return state is CategorieSuccessState?SizedBox(height: 150,child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (c,i){return Column(children: [
-                        Image.network(state.categoriedata[i].media),
-                        const SizedBox(height: 16,),
-                        Text(state.categoriedata[i].name)
-                      ],);},itemCount: state.categoriedata.length,),):state is CategorieLoadingState? const Center(child: CircularProgressIndicator(),):const FlutterLogo();
-                    },
-                  )
-
-                ],
-              ),
-            ),
-          ),
-        ),
+        // اعرضلى المكان الانديكس اللى انا واقف عليه حاليا واروح احط الديزاين فى الماين فيو عندى
+        body:pages[curentIndex] ,
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: curentIndex,

@@ -1,3 +1,5 @@
+import 'package:thimarr/screens/home/product_categoire_model.dart';
+
 import 'categorie_model.dart';
 import 'slider_model.dart';
 
@@ -15,3 +17,13 @@ class CategorieSuccessState extends HomeStates{
   CategorieSuccessState(this.categoriedata);
 }
 class CategorieFailedState extends HomeStates{}
+
+
+
+// categoirse get product data states
+class CategoireProductLoadingState extends HomeStates{}
+class CategoireProductSuccessState extends HomeStates{
+  List<DataModel> ?productData;
+  CategoireProductSuccessState(this.productData);
+}
+class CategoireProductFailedState extends HomeStates{}
