@@ -8,10 +8,7 @@ import 'package:thimarr/core/logic/helper_navgat.dart';
 import 'package:thimarr/screens/auth/login/cuipt.dart';
 import 'package:thimarr/screens/auth/login/states.dart';
 import 'package:thimarr/screens/auth/verfiycode/verfiycode.dart';
-import 'package:thimarr/screens/home_screen.dart';
 import 'package:thimarr/screens/auth/register/register.dart';
-
-import '../../../controller/login_controller.dart';
 import '../../home/home.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -142,9 +139,7 @@ class LoginScreen extends StatelessWidget {
                       color: Colors.green,
                       text2: 'تسجيل الأن',
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (c) {
-                          return const RegisterScreen();
-                        }));
+                        navigatorTo(RegisterScreen());
                       }),
                 ],
               ),

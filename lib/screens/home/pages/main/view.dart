@@ -286,8 +286,7 @@ class _Item extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            // HomeCubit cubit = HomeCubit();
-            // cubit.categoireGetProductData();
+            navigatorTo(BasketView());
           },
           style: ButtonStyle(
               padding: MaterialStateProperty.all(

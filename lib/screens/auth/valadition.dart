@@ -1,11 +1,8 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:thimarr/core/design/custom_rich_text.dart';
-import 'package:thimarr/core/design/custom_text_button.dart';
 import 'package:thimarr/core/logic/helper_navgat.dart';
-import 'package:thimarr/screens/auth/change_phone_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:thimarr/screens/auth/create.dart';
 import 'package:thimarr/screens/auth/login/login.dart';

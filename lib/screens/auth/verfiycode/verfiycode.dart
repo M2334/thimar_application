@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thimarr/core/design/custom_button.dart';
 import 'package:thimarr/core/design/custom_rich_text.dart';
-import 'package:thimarr/core/design/custom_text_button.dart';
 import 'package:thimarr/core/design/custom_text_field.dart';
 import 'package:thimarr/core/logic/helper_navgat.dart';
 import 'package:thimarr/screens/auth/valadition.dart';

@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:thimarr/screens/add_address/view.dart';
-import 'package:thimarr/screens/auth/verfiycode/verfiycode.dart';
 import 'package:thimarr/core/logic/helper_navgat.dart';
-import 'package:thimarr/get_data.dart';
-import 'package:thimarr/screens/auth/create.dart';
-import 'package:thimarr/screens/auth/register/register.dart';
 import 'package:thimarr/screens/auth/splash.dart';
-import 'package:thimarr/screens/auth/verfiycode/verfiycode.dart';
 import 'package:thimarr/screens/home/basket/view.dart';
 import 'package:thimarr/screens/home/home.dart';
-
-
-import 'controller/login_controller.dart';
-import 'core/logic/helper_navgat.dart';
 
 void main() async{
   runApp(const MyApp());
@@ -40,8 +30,8 @@ class MyApp extends StatelessWidget {
 
       // home: const SplashScreen(),
       // home: const AddAddressView(),
-      // home: const HomeScreen(),
-      home: const BasketView(),
+      home: const HomeScreen(),
+      // home: const BasketView(),
     );
   }
 }
