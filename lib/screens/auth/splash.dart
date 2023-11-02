@@ -16,6 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
   }
+  @override
   Widget build( BuildContext context) {
     return Container(
       width: double.infinity,

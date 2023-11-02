@@ -14,8 +14,8 @@ class Data {
 
 class Links {
   late final String first, last;
-  late final Null prev;
-  late final Null next;
+  late final void prev;
+  late final void next;
 
   Links.fromJson(Map<String, dynamic> json) {
     first = json['first'];

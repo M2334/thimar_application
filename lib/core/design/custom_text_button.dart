@@ -6,6 +6,7 @@ class CustomTextButton extends StatelessWidget {
       : super(key: key);
   final String text;
   final Function onPress;
+  @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {

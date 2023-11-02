@@ -5,7 +5,6 @@ import 'package:thimarr/core/design/custom_text_field.dart';
 import 'package:thimarr/core/logic/helper_navgat.dart';
 import 'package:thimarr/screens/auth/valadition.dart';
 
-import '../../core/design/custom_text_field.dart';
 import 'login/login.dart';
 
 class CreateNewPassward extends StatefulWidget {

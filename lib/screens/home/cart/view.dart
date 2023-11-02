@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thimarr/core/design/custom_button.dart';
 import 'package:thimarr/core/logic/helper_navgat.dart';
 import 'package:thimarr/screens/complete_order/view.dart';
+import 'package:thimarr/screens/home/cart/cart_cubit.dart';
 import 'package:thimarr/screens/home/home.dart';
 
-import '../../../core/design/custom_text_button.dart';
+import 'cart_states.dart';
+import 'mdel.dart';
 
-class BasketView extends StatelessWidget {
-  const BasketView({Key? key}) : super(key: key);
+class CartView extends StatelessWidget {
+  const CartView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class BasketView extends StatelessWidget {
             width: 50,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Color(0xffF3F8EE),
+              color: const Color(0xffF3F8EE),
             ),
             child: IconButton(
               icon: const Icon(
@@ -35,7 +38,7 @@ class BasketView extends StatelessWidget {
                 color: Color(0xFF4C8613),
               ),
               onPressed: () {
-                navigatorTo(HomeScreen());
+                navigatorTo(const HomeScreen());
               },
             ),
           )
@@ -45,12 +48,26 @@ class BasketView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-                height: 406,
-                child: ListView.builder(
-                  itemBuilder: (context, index) => _Item(),
-                  itemCount: 4,
-                )),
+            BlocProvider<CartCubit>(
+              create: (context) => CartCubit()..getAllCarts(),
+              child: BlocBuilder<CartCubit, CartStates>(
+                builder: (context, state) {
+                  return state is LoadingCartState
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : state is SuccessCartState
+                          ? SizedBox(
+                              height: 406,
+                              child: ListView.builder(
+                                itemBuilder: (context, index) =>
+                                    _Item(state.carts, index),
+                                itemCount: state.carts.length,
+                              ))
+                          : FlutterLogo();
+                },
+              ),
+            ),
             const SizedBox(
               height: 1,
             ),
@@ -59,7 +76,7 @@ class BasketView extends StatelessWidget {
               width: 342,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                  border: Border.all(color: Color(0xFFE2E2E2)),
+                border: Border.all(color: const Color(0xFFE2E2E2)),
               ),
               child: Row(
                 children: [
@@ -77,9 +94,9 @@ class BasketView extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 39,
+                      height: 39,
                       width: 79,
-                      margin: EdgeInsetsDirectional.all(8),
+                      margin: const EdgeInsetsDirectional.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.green,
@@ -99,49 +116,88 @@ class BasketView extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsetsDirectional.only(end: 77),
-                child: const Text("جميع الأسعار تشمل قيمة الضريبة المضافة 15 %",style: TextStyle(fontSize: 15,color: Color(0xFF4C8613)),)),
+                padding: const EdgeInsetsDirectional.only(end: 77),
+                child: const Text(
+                  "جميع الأسعار تشمل قيمة الضريبة المضافة 15 %",
+                  style: TextStyle(fontSize: 15, color: Color(0xFF4C8613)),
+                )),
             Container(
-              margin: EdgeInsetsDirectional.all( 10),
-              padding: EdgeInsetsDirectional.all(5),
+              margin: const EdgeInsetsDirectional.all(10),
+              padding: const EdgeInsetsDirectional.all(5),
               decoration: BoxDecoration(
-                color: Color(0xffF3F8EE),
-                 borderRadius: BorderRadius.circular(10),
+                color: const Color(0xffF3F8EE),
+                borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("إجمالي المنتجات",style: TextStyle(fontSize: 15,color: Color(0xFF4C8613)),),
-                      SizedBox(width: 167,),
-                      Text("180ر.س",style: TextStyle(fontSize: 15,color: Color(0xFF4C8613)),),
+                    children: const [
+                      Text(
+                        "إجمالي المنتجات",
+                        style:
+                            TextStyle(fontSize: 15, color: Color(0xFF4C8613)),
+                      ),
+                      SizedBox(
+                        width: 167,
+                      ),
+                      Text(
+                        "180ر.س",
+                        style:
+                            TextStyle(fontSize: 15, color: Color(0xFF4C8613)),
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("الخصم ",style: TextStyle(fontSize: 15,color: Color(0xFF4C8613)),),
-                      SizedBox(width: 200,),
-                      Text("-40ر.س",style: TextStyle(fontSize: 15,color: Color(0xFF4C8613)),),
+                    children: const [
+                      Text(
+                        "الخصم ",
+                        style:
+                            TextStyle(fontSize: 15, color: Color(0xFF4C8613)),
+                      ),
+                      SizedBox(
+                        width: 200,
+                      ),
+                      Text(
+                        "-40ر.س",
+                        style:
+                            TextStyle(fontSize: 15, color: Color(0xFF4C8613)),
+                      ),
                     ],
                   ),
-                  Divider(height:2 ),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("المجموع ",style: TextStyle(fontSize: 15,color: Color(0xFF4C8613)),),
-                      SizedBox(width: 205,),
-                      Text("140ر.س",style: TextStyle(fontSize: 15,color: Color(0xFF4C8613)),),
+                  const Divider(height: 2),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      Text(
+                        "المجموع ",
+                        style:
+                            TextStyle(fontSize: 15, color: Color(0xFF4C8613)),
+                      ),
+                      SizedBox(
+                        width: 205,
+                      ),
+                      Text(
+                        "140ر.س",
+                        style:
+                            TextStyle(fontSize: 15, color: Color(0xFF4C8613)),
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
-            CustomButton(text: "الانتقال لإتمام الطلب", onPress: (){
-              navigatorTo(CompleteOrderView());
-            }, style: ElevatedButton.styleFrom(
-                textStyle:  const TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
-            ),),
+            CustomButton(
+              text: "الانتقال لإتمام الطلب",
+              onPress: () {
+                navigatorTo(const CompleteOrderView());
+              },
+              style: ElevatedButton.styleFrom(
+                textStyle:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+            ),
           ],
         ),
       ),
@@ -150,14 +206,15 @@ class BasketView extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  const _Item({Key? key}) : super(key: key);
-
+  List<CartData>? carts;
+  int index;
+  _Item(this.carts, this.index);
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsDirectional.all(2),
+      margin: const EdgeInsetsDirectional.all(2),
       // padding: EdgeInsetsDirectional.all(1),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFFFFFFFF),
       ),
       child: Row(
@@ -169,7 +226,7 @@ class _Item extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Image.network(
-                "https://www.agroserv.gr/wp-content/uploads/2019/02/%CE%A4%CE%BF%CE%BC%CE%AC%CF%84%CE%B1-Belladona.jpg",
+                carts![index].image,
                 height: 75,
                 width: 75,
               )),
@@ -178,8 +235,8 @@ class _Item extends StatelessWidget {
           ),
           Column(
             children: [
-              const Text(
-                "طماطم",
+              Text(
+                carts![index].title,
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
@@ -188,9 +245,9 @@ class _Item extends StatelessWidget {
               const SizedBox(
                 height: 12,
               ),
-              const Text(
-                "45 ر.س",
-                style: TextStyle(
+              Text(
+                "${carts![index].price} ر.س",
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 13,
                     color: Color(0xFF4C8613)),
@@ -199,10 +256,10 @@ class _Item extends StatelessWidget {
                 height: 6,
               ),
               Container(
-                padding: EdgeInsetsDirectional.all(3),
+                padding: const EdgeInsetsDirectional.all(3),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
-                  color: Color(0xffF3F8EE),
+                  color: const Color(0xffF3F8EE),
                 ),
                 child: Row(
                   children: [
@@ -211,18 +268,18 @@ class _Item extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.add,
                           color: Color(0xFF4C8613),
                         )),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
-                    Text(
+                    const Text(
                       "5",
                       style: TextStyle(color: Color(0xFF4C8613), fontSize: 11),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Container(
@@ -230,16 +287,17 @@ class _Item extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child: Icon(Icons.remove, color: Color(0xFF4C8613))),
+                        child:
+                            const Icon(Icons.remove, color: Color(0xFF4C8613))),
                   ],
                 ),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             width: 150,
           ),
-          Icon(
+          const Icon(
             Icons.delete,
             color: Colors.red,
           ),

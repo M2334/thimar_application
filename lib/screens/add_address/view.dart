@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:thimarr/core/design/custom_text_field.dart';
+
+import '../../core/design/custom_button.dart';
 
 class AddAddressView extends StatefulWidget {
   const AddAddressView({Key? key}) : super(key: key);
@@ -14,7 +17,7 @@ class AddAddressView extends StatefulWidget {
 
 class _AddAddressViewState extends State<AddAddressView> {
   Set<Marker> muMarkers = {
-    Marker(
+    const Marker(
       markerId: MarkerId("1"),
       position: LatLng(
         30.7070485,
@@ -23,6 +26,7 @@ class _AddAddressViewState extends State<AddAddressView> {
     ),
   };
 
+  bool isSelected = false;
   final _controller = Completer<GoogleMapController>();
 
   get location => null;
@@ -32,6 +36,7 @@ class _AddAddressViewState extends State<AddAddressView> {
     super.initState();
     _determinePosition();
   }
+
   String? myAddress;
   @override
   Widget build(BuildContext context) {
@@ -53,75 +58,150 @@ class _AddAddressViewState extends State<AddAddressView> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 400,
-            child: GoogleMap(
-              markers: muMarkers,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-              onTap: (argument) {
-                muMarkers.add(
-                  Marker(
-                    markerId:
-                        MarkerId("${argument.latitude},${argument.longitude}"),
-                    position: LatLng(
-                      argument.latitude,
-                      argument.longitude,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Container(
+            padding: const EdgeInsetsDirectional.all(17),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 300,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: const GoogleMap(
+                      //  markers: muMarkers,
+
+                      // onTap: (argument) {
+                      //   muMarkers.add(
+                      //     Marker(
+                      //       markerId:
+                      //           MarkerId("${30.7070485},${30.7070485}"),
+                      //       position: LatLng(
+                      //         30.7070485,
+                      //         30.7070485,
+                      //       ),
+                      //     ),
+                      //   );
+                      //   setState(() {});
+                      //   print(argument.longitude);
+                      //   print(argument.latitude);
+                      // },
+                      // mapType: MapType.terrain,
+                      initialCameraPosition: CameraPosition(
+                        zoom: 7,
+                        target: LatLng(30.7070485, 31.7070485),
+                      ),
+                      // circles: {
+                      //   Circle(circleId: CircleId("1"),
+                      //     center: LatLng(
+                      //       30.7070485,
+                      //       31.2844864,
+                      //     ),
+                      //     radius: 20000,
+                      //     strokeColor: Colors.red,
+                      //   ),
+                      // },
                     ),
                   ),
-                );
-                setState(() {});
-                print(argument.longitude);
-                print(argument.latitude);
-              },
-              mapType: MapType.terrain,
-              initialCameraPosition: CameraPosition(
-                  zoom: 14,
-                  target: location,),
-              circles: {
-                Circle(circleId: CircleId("1"),
-                  center: LatLng(
-                    30.7070485,
-                    31.2844864,
-                  ),
-                  radius: 20000,
-                  strokeColor: Colors.red,
                 ),
-              },
+                const SizedBox(
+                  height: 5,
+                ),
+                Column(
+                  children: [
+                    Container(
+                      padding:
+                          const EdgeInsetsDirectional.only(start: 5, end: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          color: const Color(0xFF8B8B8B),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          const Text(
+                            "نوع العنوان",
+                            style: TextStyle(
+                                fontSize: 15, color: Color(0xFF8B8B8B)),
+                          ),
+                          const Spacer(),
+                          ToggleButtons(
+                              borderRadius: BorderRadius.circular(10),
+                              onPressed: (ind) {
+                                ind = 1;
+                                setState(() {
+                                  isSelected = !isSelected;
+                                });
+                              },
+                              selectedColor: Colors.white,
+                              fillColor: Colors.green,
+                              isSelected: [
+                                isSelected,
+                                !isSelected
+                              ],
+                              children: const [
+                                Text("المنزل"),
+                                Text("العمل"),
+                              ]),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 14,
+                    ),
+                    CustomTextField(
+                        labelText: 'أدخل رقم الجوال',
+                        controller: TextEditingController()),
+                    const SizedBox(
+                      height: 14,
+                    ),
+                    CustomTextField(
+                        labelText: 'الوصف',
+                        controller: TextEditingController()),
+                    CustomButton(
+                      text: 'إضافة العنوان',
+                      onPress: () {},
+                      style: const ButtonStyle(
+                        backgroundColor:
+                            MaterialStatePropertyAll(Color(0xFF558B2F)),
+                      ),
+                    ),
+                  ],
+                ),
+                // if(myAddress == null)
+                // Text(myAddress!),
+              ],
             ),
           ),
-          if(myAddress == null)
-          Text(myAddress!),
-        ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          goToLocation(location: LatLng(
-            37.42796133580664,
-            -122.085749655962,
-          ),);
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () async {
+      //     goToLocation(location: LatLng(
+      //       37.42796133580664,
+      //       -122.085749655962,
+      //     ),);
+      //   },
+      // ),
     );
   }
 
-  Future<void>goToLocation( {required LatLng location})async{
+  Future<void> goToLocation({required LatLng location}) async {
     final GoogleMapController controller = await _controller.future;
     await controller
-        .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        .animateCamera(CameraUpdate.newCameraPosition(const CameraPosition(
       target: LatLng(37.42796133580664, -122.085749655962),
       zoom: 8,
     )));
     muMarkers.add(
-       Marker(
-        markerId: MarkerId("1"),
+      Marker(
+        markerId: const MarkerId("1"),
         position: location,
       ),
     );
-    List<Placemark> placemarks = await placemarkFromCoordinates(location.latitude, location.longitude);
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(location.latitude, location.longitude);
     var element = placemarks.first;
     print(element.name);
     print(element.country);
@@ -132,8 +212,9 @@ class _AddAddressViewState extends State<AddAddressView> {
     myAddress = "${element.country} / ${element.street} / ${element.locality}";
     setState(() {});
   }
+
   Future<Position> _determinePosition() async {
-    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();;
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     LocationPermission permission;
 
     // Test if location services are enabled.
@@ -141,7 +222,9 @@ class _AddAddressViewState extends State<AddAddressView> {
       // Location services are not enabled don't continue
       // accessing the position and request users of the
       // App to enable the location services.
-      ScaffoldMessenger(child: Text("Location services are disabled"),);
+      const ScaffoldMessenger(
+        child: Text("Location services are disabled"),
+      );
       return Future.error('Location services are disabled.');
     }
 
@@ -169,7 +252,7 @@ class _AddAddressViewState extends State<AddAddressView> {
     var myPosation = await Geolocator.getCurrentPosition();
     print(myPosation.longitude);
     print(myPosation.latitude);
-    goToLocation(location: LatLng(myPosation.longitude,myPosation.latitude));
-    return myPosation ;
+    goToLocation(location: LatLng(myPosation.longitude, myPosation.latitude));
+    return myPosation;
   }
 }

@@ -1,9 +1,7 @@
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:thimarr/screens/auth/login/model.dart';
 import 'package:thimarr/screens/auth/login/states.dart';
 
 class LoginCubit extends Cubit<LoginStates> {

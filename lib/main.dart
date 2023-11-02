@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thimarr/core/logic/helper_navgat.dart';
-import 'package:thimarr/screens/auth/splash.dart';
-import 'package:thimarr/screens/home/basket/view.dart';
-import 'package:thimarr/screens/home/home.dart';
+import 'package:thimarr/screens/home/pages/my_account/view.dart';
 
 void main() async{
   runApp(const MyApp());
@@ -29,8 +27,10 @@ class MyApp extends StatelessWidget {
          child: child!,);},
 
       // home: const SplashScreen(),
-      // home: const AddAddressView(),
-      home: const HomeScreen(),
+      // home: const HomeScreen(),
+      // home: const HomeScreen(),
+      // home:  CompleteOrderView(),
+      home:  MyAccountPage(),
       // home: const BasketView(),
     );
   }

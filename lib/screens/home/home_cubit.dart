@@ -21,7 +21,7 @@ class HomeCubit extends Cubit<HomeStates>{
       // convert Model من شكل مااب الى شكل اوبيجكت عندى تو ليست
        sliderData=data.map((e) => SliderModel.fromJson(e)).toList();
        print('/*/*/*/**/*/*/**/*/*/*/*/*/*/');
-      print('/*//////' + sliderData.toString());
+      print('/*//////$sliderData');
       print(sliderData![0].media);
       emit(HomeSuccessState(sliderData!));
     } on DioException catch(e){

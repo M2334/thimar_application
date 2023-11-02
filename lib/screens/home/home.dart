@@ -1,7 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:thimarr/core/design/custom_text_field.dart';
 import 'package:thimarr/screens/home/home_cubit.dart';
 import 'package:thimarr/screens/home/pages/favourites/view.dart';
 import 'package:thimarr/screens/home/pages/main/view.dart';
@@ -9,7 +7,6 @@ import 'package:thimarr/screens/home/pages/my_account/view.dart';
 import 'package:thimarr/screens/home/pages/my_orders/view.dart';
 import 'package:thimarr/screens/home/pages/notifications/view.dart';
 
-import 'home_states.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,11 +17,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int curentIndex = 0;
   List<Widget> pages = [
-    MainPage(),
-    MyOrderPage(),
-    NotificationsPage(),
-    FavouritesPage(),
-    MyAccountPage(),
+    const MainPage(),
+    const MyOrderPage(),
+    const NotificationsPage(),
+    const FavouritesPage(),
+    const MyAccountPage(),
   ];
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final String labelText;
-  final Icon prefixIcon;
+  final Icon? prefixIcon;
   final bool isEnabled;
   final TextEditingController controller;
   const CustomTextField(
-      {Key? key, required this.labelText, required this.prefixIcon,required this.controller, this.isEnabled = true})
+      {Key? key, required this.labelText,  this.prefixIcon,required this.controller, this.isEnabled = true})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CustomTextField extends StatelessWidget {
           border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10))),
           prefixIcon: prefixIcon,
-          labelText: labelText),
+          hintText: labelText),
     );
   }
 }

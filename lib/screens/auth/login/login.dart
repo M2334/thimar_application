@@ -139,7 +139,7 @@ class LoginScreen extends StatelessWidget {
                       color: Colors.green,
                       text2: 'تسجيل الأن',
                       onTap: () {
-                        navigatorTo(RegisterScreen());
+                        navigatorTo(const RegisterScreen());
                       }),
                 ],
               ),

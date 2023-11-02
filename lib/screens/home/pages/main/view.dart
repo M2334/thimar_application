@@ -1,12 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thimarr/core/logic/helper_navgat.dart';
+import 'package:thimarr/screens/home/cart/view.dart';
 import 'package:thimarr/screens/home/product_categoire_model.dart';
 
 import '../../../../core/design/custom_text_field.dart';
-import '../../basket/view.dart';
 import '../../home_cubit.dart';
 import '../../home_states.dart';
 
@@ -24,8 +23,11 @@ class MainPage extends StatelessWidget {
               Row(
                 children: [
                   const Image(
+                    width: 25,
+                    height: 25,
                     image: AssetImage('assets/images/logo.png'),
                   ),
+                  const SizedBox(width: 5,),
                   const Text(
                     'سلة ثمار',
                     style: TextStyle(
@@ -63,7 +65,7 @@ class MainPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: (){
-                      navigatorTo(const BasketView());
+                      navigatorTo(const CartView());
                     },
                       child: const Icon(Icons.lock_open)
                   ),
@@ -165,7 +167,7 @@ class MainPage extends StatelessWidget {
                     builder: (context, state) {
                       // بيشوف لو بتحمل اظهر الدائرة
                       return state is CategoireProductLoadingState
-                          ? CircularProgressIndicator()
+                          ? const CircularProgressIndicator()
                       //لو التحميل تم اظهر الويدجيت
                           : state is CategoireProductSuccessState
                               ? GridView.builder(
@@ -204,8 +206,14 @@ class _Item extends StatelessWidget {
         Stack(
           alignment: Alignment.topLeft,
           children: [
-            Image.network(
-              categories[index].mainImage,
+            Container(
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Image.network(
+                categories[index].mainImage,
+              ),
             ),
             Container(
               height: 19,
@@ -286,7 +294,7 @@ class _Item extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            navigatorTo(BasketView());
+            navigatorTo(const CartView());
           },
           style: ButtonStyle(
               padding: MaterialStateProperty.all(

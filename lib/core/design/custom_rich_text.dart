@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../../screens/auth/change_phone_screen.dart';
 class CustomRichText extends StatelessWidget {
   final String text1,text2;
   final Function onTap;

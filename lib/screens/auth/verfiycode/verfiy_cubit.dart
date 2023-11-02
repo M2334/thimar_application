@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thimarr/screens/auth/verfiycode/verfiy_states.dart';
-import 'package:thimarr/screens/auth/verfiycode/verfiy_states.dart';
 
 class VerfiyCubit extends Cubit<VerfiyStates>{
   VerfiyCubit() : super(VerfiyStates());
